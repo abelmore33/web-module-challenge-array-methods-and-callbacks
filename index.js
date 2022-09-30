@@ -8,15 +8,16 @@ Practice accessing data by console.log-ing the following pieces of data note.
 💡 HINT: You may want to filter the data first 😉*/
 
 //(a) Home Team name for 2014 world cup final
-
+const homeTeam2014 = fifaData.filter(data => data.Year === 2014 && data.Stage === "Final" )
+console.log(homeTeam2014[0]['Home Team Name']);
 //(b) Away Team name for 2014 world cup final
-
+console.log(homeTeam2014[0]['Away Team Name']);
 //(c) Home Team goals for 2014 world cup final
-
+console.log(homeTeam2014[0]['Home Team Goals']);
 //(d) Away Team goals for 2014 world cup final
-
+console.log(homeTeam2014[0]['Away Team Goals']);
 //(e) Winner of 2014 world cup final */
-
+const winner = homeTeam2014[0]["Win conditions"]
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
@@ -54,9 +55,11 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(array,callback) {
+    const finalWinners = callback(array).map(data => data["Home Team Goals"] > data["Away Team Goals"] ? data["Home Team Name"] : data["Away Team Name"]);
+return finalWinners;
 }
+console.log('task 4',getWinners(fifaData,getFinals));
 
 
 
